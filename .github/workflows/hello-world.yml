@@ -2,7 +2,7 @@ name: Hello world
 run-name: ${{ github.actor }} says hello!
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
