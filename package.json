@@ -1,0 +1,22 @@
+{
+  "name": "gh-actions-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Tests run successfully!! QAs won't have to work much :)\"",
+    "lint": "echo \"Looks like you forgot a console.log in your files :(\" && exit 1",
+    "build": "echo \"Building your app.......\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bernatduran/gh-actions-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bernatduran/gh-actions-demo/issues"
+  },
+  "homepage": "https://github.com/bernatduran/gh-actions-demo#readme"
+}
