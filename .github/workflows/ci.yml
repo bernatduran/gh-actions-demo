@@ -35,6 +35,58 @@ jobs:
       - name: 🧪 Test
         run: npm test
 
-  # lint:
+  lint:
+    name: 🔬 Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-  # build:
+      - name: ⎔  Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: 🔒 Cache node_modules
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: 📥 Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci --legacy-peer-deps
+
+      - name: 🔬 Lint
+        run: npm run lint
+
+  build:
+    name: 🐳 build
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: ⎔  Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: 🔒 Cache node_modules
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: 📥 Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci --legacy-peer-deps
+
+      - name: 🐳 Build
+        run: npm run build
