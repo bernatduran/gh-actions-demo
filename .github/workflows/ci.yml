@@ -66,6 +66,7 @@ jobs:
   build:
     name: 🐳 build
     runs-on: ubuntu-latest
+    needs: ['tests']
     steps:
       - name: ⬇️ Checkout
         uses: actions/checkout@v3
